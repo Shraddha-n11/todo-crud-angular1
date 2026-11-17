@@ -1,0 +1,38 @@
+<div class="container-fluid min-vh-100" style="background-color: #dff1fa; padding: 30px;">
+   <div class="text-center mb-r">
+    <h1 class="fw-bold text-primary">TODO CRUD</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{isInEditMode ? 'Update todo' : 'Add todo'}}</h2>
+            <div class="form-group mt-3">
+                <label for="todoItem">Enter Todo</label>
+                <input type="text" class="form-control" #todoName>
+            </div>
+            <button mat-raised-button color="primary" *ngIf="!isInEditMode" (click)="onAddTodo()">
+        Add Todo
+      </button>
+
+      <button mat-raised-button color="warn" *ngIf="isInEditMode" (click)="onUpdateTodo()">
+        Update Todo
+      </button>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let todo of todosArr">
+                    <strong>{{todo.todoItem}}</strong>
+                    <div>
+                   <button mat-mini-fab color="primary" class="me-4" (click)="onEditTodo(todo)">
+                 <mat-icon>edit</mat-icon>
+                 </button>
+
+                <button mat-mini-fab color="warn" (click)="onDeleteTodo(todo.todoId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
